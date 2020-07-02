@@ -7,11 +7,12 @@
 # This script needs the modified antsMultivariateTemplateConstruction2.sh. You can get it here: https://github.com/GarzaLab/scripts/rodent_dbm
 
 # USAGE
-# bash rat-invivo-average.sh subject session
+# bash rat-invivo-average.sh subject session modality. 
+# I.e. bash rat-invivo-average.sh sub-5 ses-1 T1w
 
 if [ $# -eq 0 ];then
 
-	echo "usage: "$0" subject session";
+	echo "usage: "$0" subject session modality";
 
 	exit 0;
 
@@ -22,6 +23,7 @@ project=$PWD
 
 subject=$1
 session=$2
+modality=$3
 
 ## Create derivatives directory 
 ##
@@ -40,7 +42,7 @@ if [ ! -d ${project}/derivatives${subject}/${session}/preproc ] ; then
 mkdir -p ${project}/derivatives/${subject}/${session}/preproc;
 fi
 
-ImageMath 4 ${project}/derivatives/${subject}/${session}/preproc/split.nii.gz TimeSeriesDisassemble ${project}/data/${subject}/${session}/anat/${subject}_${session}_T1w.nii.gz
+ImageMath 4 ${project}/derivatives/${subject}/${session}/preproc/split.nii.gz TimeSeriesDisassemble ${project}/data/${subject}/${session}/anat/${subject}_${session}_${modality}.nii.gz
 
 # Average 
 antsMultivariateTemplateConstruction2_rigidaverage.sh -d 3 -a 0 -e 0 -n 0 -m MI -t Rigid -o ${project}/derivatives/${subject}/${session}/preproc/average ${project}/derivatives/${subject}/${session}/preproc/split*.nii.gz
