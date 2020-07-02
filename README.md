@@ -2,6 +2,10 @@
 
 Here are useful scripts for several needs.
 
+# Rodent DBM
+
+This folder contains scripts for rat and mouse DBM.
+
 ## Vertex Coordinate Atlas
 
 This is a function I created for R statistics. This function uses the GLM information from the vertexLm and vertexFDR from RMINC, to create Tables ready for publication. The tables have the following columns: 1) Labels, 2) MNI coordinates, 3) vertex, 4) T-value. 

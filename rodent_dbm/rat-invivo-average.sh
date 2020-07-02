@@ -7,7 +7,7 @@
 # This script needs the modified antsMultivariateTemplateConstruction2.sh. You can get it here: https://github.com/GarzaLab/scripts/rodent_dbm
 
 # USAGE
-# bash preproc_2.sh subject session
+# bash rat-invivo-average.sh subject session
 
 if [ $# -eq 0 ];then
 
