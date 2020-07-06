@@ -5,7 +5,7 @@
 
 for i in $@; do
   BN=$(basename $i .svg)
-  inkscape --export-png="$BN.png" --export-dpi 300 $i
+  inkscape --export-filename="$BN.png" --export-dpi 300 $i
   convert -compress LZW -alpha remove $BN.png $BN.tiff
   mogrify -alpha off $BN.tiff
   rm $BN.png
